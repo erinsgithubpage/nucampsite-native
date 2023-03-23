@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { FlatList } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
+import { CAMPSITES } from "../shared/campsites";
 
 const DirectoryScreen = (props) => {
   const renderDirectoryItem = ({ item: campsite }) => {
