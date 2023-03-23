@@ -13,21 +13,21 @@ const screenOptions = {
 
 const HomeNavigator = () => {
   const Stack = createStackNavigator();
-  return <Stack.Navigator></Stack.Navigator>;
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: "Home" }}
+      />
+    </Stack.Navigator>
+  );
 };
 
 const DirectoryNavigator = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator
-      initialRouteName="Directory"
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#5637DD",
-        },
-        headerTintColor: "#fff",
-      }}
-    >
+    <Stack.Navigator initialRouteName="Directory" screenOptions={screenOptions}>
       <Stack.Screen
         name="Directory"
         component={DirectoryScreen}
