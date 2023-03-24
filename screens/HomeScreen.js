@@ -26,6 +26,9 @@ const FeaturedItem = ({ item }) => {
           {item.description}
         </Text>
       </Card>
+     
+      
+  
     );
   }
   return <View />
