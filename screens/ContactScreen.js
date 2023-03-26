@@ -1,31 +1,38 @@
-import { useState } from "react";
-import { FlatList } from "react-native";
-import { Avatar, ListItem } from "react-native-elements";
-import { CAMPSITES } from "../shared/campsites";
-import { createStackNavigator } from '@react-navigation/stack';
+import { ScrollView, Text } from 'react-native';
+import { Card } from 'react-native-elements';
 
 const ContactScreen = ({  }) => {
-    const [campsites, setCampsites] = useState(CAMPSITES)
+    
   return (
     <ScrollView>
+      <Card wrapperStyle={{margin: 20}}
+      >
+        <Card.Title
+          title='Contact Information'
+        >
+        </Card.Title>
+        <Card.Divider />
+        <Text >
+        1 Nucamp Way
+      </Text>
+      <Text>
+        Seattle, WA 98001
+      </Text>
+      <Text>
+        U.S.A.
+      </Text>
+      <Text>
+        Phone: 1-206-555-1234
+        </Text>
+      <Text style={{marginBottom:10}}>
+        Email: campsites@nucamp.co
+      </Text>
+     
 
+      </Card>
     </ScrollView>
 )
   }
 
-  const Stack = createStackNavigator();
-
-  function MyStack() {
-    return (
-      <Stack.Navigator>
-        <Stack.Screen name="Contact" component={Home} 
-        options={{ title: 'Contact Us' }}/>
-      
-       
-      </Stack.Navigator>
-
-    );
-  }
-  
   
   export default ContactScreen;

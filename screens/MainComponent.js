@@ -51,6 +51,31 @@ const DirectoryNavigator = () => {
     );
 };
 
+const AboutNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='About'
+                component={AboutScreen}
+                options={{ title: 'About' }}
+            />
+        </Stack.Navigator>
+    );
+};
+const ContactNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='Contact'
+                component={ContactScreen}
+                options={{ title: 'Contact' }}
+            />
+        </Stack.Navigator>
+    );
+};
+
 const Main = () => {
     return (
         <View
@@ -69,11 +94,21 @@ const Main = () => {
                     component={HomeNavigator}
                     options={{ title: 'Home' }}
                 />
-                <Drawer.Screen
+                <Drawer.Screen              
                     name='Directory'
                     component={DirectoryNavigator}
                     options={{ title: 'Directory' }}
                 />
+                <Drawer.Screen
+                    name='About'
+                    component={AboutNavigator}
+                />
+                <Drawer.Screen 
+                    name='Contact'
+                    component={ContactNavigator}
+                    options={{ title: 'Contact Us'}}
+                />
+              
             </Drawer.Navigator>
         </View>
     );

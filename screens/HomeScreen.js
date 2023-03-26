@@ -49,7 +49,8 @@ const HomeScreen = () => {
       <FeaturedItem item={featPromotion} />
       <FeaturedItem item={featPartner} />
     </ScrollView>
-  );
+    )
+   
 };
 
 export default HomeScreen;
