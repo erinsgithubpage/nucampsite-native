@@ -19,7 +19,25 @@ const campsitesSlice = createSlice({
     name: 'campsites',
     initialState: { isLoading: true, errMess: null, campsitesArray: [] },
     reducers: {},
-    extraReducers: (builder) => {
+    extraReducers: {
+        [fetchCampsites.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchCampsites.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.errMess = null,
+            state.campsitesArray = action.payload;
+        },
+        [fetchCampsites.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.errMess = action.console.error ? action.error.message : 'Fetch failed';
+        }
+        }
+        
+    });
+    
+    
+    /*(builder) => {
         builder
             .addCase(fetchCampsites.pending, (state) => {
                 state.isLoading = true;
@@ -36,4 +54,6 @@ const campsitesSlice = createSlice({
                     : 'Fetch failed';
             });
     }
-});
+});*/
+
+export const campsitesReducer = campsitesSlice.reducer;
