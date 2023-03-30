@@ -37,3 +37,5 @@ const commentsSlice = createSlice({
             });
     }
 });
+
+export const commentsReducer = commentsSlice.reducer;

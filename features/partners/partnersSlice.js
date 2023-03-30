@@ -37,3 +37,5 @@ const partnersSlice = createSlice({
             });
     }
 });
+
+export const partnersReducer = partnersSlice.reducer;

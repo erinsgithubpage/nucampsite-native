@@ -37,3 +37,5 @@ const promotionsSlice = createSlice({
             });
     }
 });
+
+export const promotionsReducer = promotionsSlice.reducer;
