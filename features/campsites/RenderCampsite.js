@@ -16,7 +16,7 @@ const RenderCampsite = (props) => {
                                 fontSize: 20
                             }}
                         >
-                            {styles.cardText}
+                            {styles.cardRow}
                         </Text>
                     </View>
                 </Card.Image>
