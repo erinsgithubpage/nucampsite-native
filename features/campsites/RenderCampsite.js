@@ -33,6 +33,15 @@ const RenderCampsite = (props) => {
                             : props.markFavorite()
                     }
                 />
+
+                <Icon
+                    name={props.isFavorite ? 'pencil' : 'heart-o'}
+                    type='font-awesome'
+                    color='#5637DD'
+                    raised
+                    reverse
+                    onPress={() => props.onShowModal()}
+                />
             </Card>
         );
     }
