@@ -15,10 +15,32 @@ export const fetchComments = createAsyncThunk(
     }
 );
 
+export const postComment = createAsyncThunk('comments/postComment',
+async (payload, { dispatch, getState }) => {
+    setTimeout(() => {
+        const { comments } = getState();
+        payload.id= comments.commentsArray.length;
+        payload.date= new Date(),toISOString();
+        dispatch(addComment(payload))
+    }, 2000);
+    
+}
+);
+
 const commentsSlice = createSlice({
     name: 'comments',
     initialState: { isLoading: true, errMess: null, commentsArray: [] },
-    reducers: {},
+    reducers: {
+        addComment: (state, action) => {
+            if (favorites.includes(action.payload)) {
+                return favorites.filter(
+                    (favorite) => favorite !== action.payload
+                );
+            } else {
+                favorites.push(action.payload);
+            }
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchComments.pending, (state) => {
@@ -39,3 +61,6 @@ const commentsSlice = createSlice({
 });
 
 export const commentsReducer = commentsSlice.reducer;
+
+export const addComment = commentsSlice.reducer;
+
