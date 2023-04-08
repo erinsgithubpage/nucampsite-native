@@ -6,7 +6,7 @@ import {
     StyleSheet,
     Switch,
     Button,
-    Modal,
+    Alert
     } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -29,21 +29,60 @@ const ReservationScreen = () => {
         console.log('campers:', campers);
         console.log('hikeIn:', hikeIn);
         console.log('date:', date);
-        setShowModal(!showModal);
-    };
+        
+    
+       // const message = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nGuests: ${guests}\nDate: ${date}\nTime: ${time}`;
+       const title = "Begin Search?";
+       const message = `Number of Campers: ${campers}
+       \nHike-In?: ${hikeIn}
+       \nDate: ${date.toLocaleDateString("en-US")}`
+        Alert.alert(
+          title, message,
+          [
+            {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel",
+            },
+            {
+                text: "OK",
+                onPress: () => console.log("OK Pressed"),
+    },
+          ],
+          { cancelable: true }
+            
+        );
+      };
+      
+      {/*const resetForm = () => {
+        setName('');
+        setPhone('');
+        setEmail('');
+        setGuests('');
+        setDate('');
+        setTime(''); 
+
+    };*/}
 
     const resetForm = () => {
         setCampers(1);
         setHikeIn(false);
         setDate(new Date());
         setShowCalendar(false);
+        {/*added from above code */}
+        setName('');
+        setPhone('');
+        setEmail('');
+        setGuests('');
+        setDate('');
+        setTime(''); 
     };
 
     return (
         <ScrollView>
-            <Animatable.View animation="zoominUp"
-                duration="2000"
-                delay="1000"   
+            <Animatable.View animation="zoomInUp"
+                duration={2000}
+                delay={1000}   
             >
             <View style={styles.formRow}>
                 <Text style={styles.formLabel}>Number of Campers:</Text>
@@ -96,36 +135,7 @@ const ReservationScreen = () => {
                 />
             </View>
             </Animatable.View>
-            <Modal
-                animationType='slide'
-                transparent={false}
-                visible={showModal}
-                onRequestClose={() => setShowModal(!showModal)}
-            >
-                <View style={styles.modal}>
-                    <Text style={styles.modalTitle}>
-                        Search Campsite Reservations
-                    </Text>
-                    <Text style={styles.modalText}>
-                        Number of Campers: {campers}
-                    </Text>
-                    <Text style={styles.modalText}>
-                        Hike-In?: {hikeIn ? 'Yes' : 'No'}
-                    </Text>
-                    <Text style={styles.modalText}>
-                        Date: {date.toLocaleDateString('en-US')}
-                    </Text>
-                    <Button
-                        onPress={() => {
-                            setShowModal(!showModal);
-                            resetForm();
-                        }}
-                        color='#5637DD'
-                        title='Close'
-                    />
-                </View>
-                
-            </Modal>
+        {/*old modal here*/}
         </ScrollView>
     );
 };

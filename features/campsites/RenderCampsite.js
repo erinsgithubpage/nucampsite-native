@@ -11,6 +11,11 @@ const RenderCampsite = (props) => {
 
     const isLeftSwipe = ({ dx }) => dx < -200;
 
+    const isRightSwipe = (gestureState)=> {
+        const { dx } = gestureState;
+        return dx > 200;
+      };
+
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onPanResponderGrant: () => {
@@ -45,7 +50,18 @@ const RenderCampsite = (props) => {
                     { cancelable: false }
                 );
             }
+
+            if (this.state.showCommentModal && !this.isLeftSwipe(gestureState)) {
+                if (this.isRightSwipe(gestureState)) {
+                  this.toggleModal();
+                }
+              }
+              this.resetForm();
         }
+
+      
+
+       
     });
 
     if (campsite) {
